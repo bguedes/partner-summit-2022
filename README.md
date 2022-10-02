@@ -42,7 +42,7 @@ In this exercise, we will work get stock data from [Alpha Vantage](https://www.a
 
 ![](images/getKey.png)
 
-## Step 1: Access CDP Public Cloud Portal
+## Step 2: Access CDP Public Cloud Portal
 
 Please use the login url [Workshop login](https://login.cdpworkshops.cloudera.com/auth/realms/se-workshop-1/protocol/saml/clients/cdp-sso)
 
@@ -56,7 +56,7 @@ You should be able to get the following home page of CDP Public Cloud.
 
 ![](images/login3.png)
 
-## Step 2: Create the flow to ingest stock data via API to Object Storage
+## Step 3: Define Workload Password
 
 ![](images/setWorkloadPasswordStep1.png)
 
@@ -66,7 +66,7 @@ You should be able to get the following home page of CDP Public Cloud.
 
 ![](images/setWorkloadPasswordStep4.png)
 
-## Step 3: Create the flow to ingest stock data via API to Object Storage
+## Step 4: Create the flow to ingest stock data via API to Object Storage
 
 ![](images/portalCDF.png)
 
@@ -135,9 +135,9 @@ STORED AS iceberg;
 
 ```
 
-## Step 4: Process and Ingest Iceberg using CDE
+## Step 5: Process and Ingest Iceberg using CDE
 
-## Step 5: Query Iceberg Tables in Hue and Cloudera Data Visualization
+## Step 6: Query Iceberg Tables in Hue and Cloudera Data Visualization
 
 ```sql
 
