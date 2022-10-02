@@ -58,8 +58,6 @@ You should be able to get the following home page of CDP Public Cloud.
 
 ## Step 2: Create the flow to ingest stock data via API to Object Storage
 
-setWorkloadPasswordStep1
-
 ![](images/setWorkloadPasswordStep1.png)
 
 ![](images/setWorkloadPasswordStep2.png)
@@ -152,6 +150,14 @@ DESCRIBE HISTORY stocks.stock_intraday_1min;
 SELECT count(*), ticker
 FROM stocks.stock_intraday_1min
 FOR SYSTEM_VERSION AS OF <snapshotid>
+GROUP BY ticker;
+
+```
+
+```sql
+
+SELECT count(*), ticker
+FROM stocks.stock_intraday_1min
 GROUP BY ticker;
 
 ```
