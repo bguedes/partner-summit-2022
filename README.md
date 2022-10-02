@@ -31,10 +31,8 @@ In this exercise, we will work get stock data from [Alpha Vantage](https://www.a
 
 1. Laptop with a supported OS (Windows 7 not supported) or Macbook.
 2. A modern browser - Google Chrome (IE, Firefox, Safari not supported).
+2. Wifi Internet connection.
 
-* Get IP from the ‘web’ instance and go to the web portal
-* Login with the username/password as defined per setup
-* Download ssh key from web portal and update permission
 
 ## Step 1: Get Alpha Vantage Key
 
@@ -43,6 +41,20 @@ In this exercise, we will work get stock data from [Alpha Vantage](https://www.a
 ![](images/claimApiKey.png)
 
 ![](images/getKey.png)
+
+## Step 1: Access CDP Public Cloud Portal
+
+Please use the login url [Workshop login](https://login.cdpworkshops.cloudera.com/auth/realms/se-workshop-1/protocol/saml/clients/cdp-sso)
+
+![](images/login1.png)
+
+Enter the username and password shared by your instructor.
+
+![](images/login2.png)
+
+You should be able to get the following home page of CDP Public Cloud.
+
+![](images/login3.png)
 
 ## Step 2: Create the flow to ingest stock data via API to Object Storage
 
@@ -128,3 +140,18 @@ STORED AS iceberg;
 ## Step 4: Process and Ingest Iceberg using CDE
 
 ## Step 5: Query Iceberg Tables in Hue and Cloudera Data Visualization
+
+```sql
+
+DESCRIBE HISTORY stocks.stock_intraday_1min;
+
+```
+
+```sql
+
+SELECT count(*), ticker
+FROM stocks.stock_intraday_1min
+FOR SYSTEM_VERSION AS OF <snapshotid>
+GROUP BY ticker;
+
+```
