@@ -1,128 +1,134 @@
-= Partner Summit 2022 - Workshop Student Guide
+# Partner Summit 2022 - Workshop Student Guide
 
-image::images/banner.png[]
+![](images/banner.png)
 
-This document guides students through the Hands on lab for Partner Summit 2022.
-It will take you step by step to completing the Prerequisites and deliver this demo.
+This document guides students through the Hands on lab for Partner Summit 2022. It will take you step by step to completing the Prerequisites and deliver this demo.
 
-'''
+---
 
-== Introduction
+## Introduction
 
-The purpose of this repository is to enable the easy and quick setup of the Partner Summit workshop.
-Cloudera Data Platform (CDP) has been built from the ground up to support hybrid, multi-cloud data management in support of a Data Fabric architecture.
-This worshop provide an introduction to CDP, with a focus on the data management capabilities that enable the Data Fabric and Data Lakehouse.
+The purpose of this repository is to enable the easy and quick setup of the Partner Summit workshop. Cloudera Data Platform (CDP) has been built from the ground up to support hybrid, multi-cloud data management in support of a Data Fabric architecture. This worshop provide an introduction to CDP, with a focus on the data management capabilities that enable the Data Fabric and Data Lakehouse.
 
-== Overview
+## Overview
 
-In this exercise, we will work get stock data from https://www.alphavantage.co/[Alpha Vantage], offers free stock APIs in JSON and CSV formats for realtime and historical stock market data,
+In this exercise, we will work get stock data from [Alpha Vantage](https://www.alphavantage.co/), offers free stock APIs in JSON and CSV formats for realtime and historical stock market data,
 
-* Data ingestion and streaming--provided by *_Cloudera Data Flow (CDF)_* and **Cloudera Data Engineering (CDE)*.
-* Global data access, data processing and persistence--provided by *_Cloudera Data Hub (CDH)_*.
-* Data visualization with *_CDP Data Visualization_*.
+- Data ingestion and streaming—provided by ***Cloudera Data Flow (CDF)*** and
+***Cloudera Data Engineering (CDE)**.
+- Global data access, data processing and persistence—provided by ***Cloudera Data Hub (CDH)***.
+- Data visualization with ***CDP Data Visualization***.
 
-*_Cloudera DataFlow (CDF)_* is a scalable, real-time streaming analytics platform that ingests, curates, and analyzes data for key insights and immediate actionable intelligence.
-CDF's Flow Management is powered by Apache NiFi, a no-code data ingestion and management solution.
-Apache NiFi is a very mature open source solution meant for large scale, high velocity enterprise data ingestion use cases.
+***Cloudera DataFlow (CDF)*** is a scalable, real-time streaming analytics platform that ingests, curates, and analyzes data for key insights and immediate actionable intelligence. CDF’s Flow Management is powered by Apache NiFi, a no-code data ingestion and management solution. Apache NiFi is a very mature open source solution meant for large scale, high velocity enterprise data ingestion use cases.
 
-*_Cloudera Data Engineering (CDE)_* is a serverless service for Cloudera Data Platform that allows you to submit batch jobs to auto-scaling virtual clusters.
-CDE enables you to spend more time on your applications, and less time on infrastructure.
-CDE allows you to create, manage, and schedule Apache Spark jobs without the overhead of creating and maintaining Spark clusters.
-With Cloudera Data Engineering, you define virtual clusters with a range of CPU and memory resources, and the cluster scales up and down as needed to run your Spark workloads, helping to control your cloud costs.
+***Cloudera Data Engineering (CDE)*** is a serverless service for Cloudera Data Platform that allows you to submit batch jobs to auto-scaling virtual clusters. CDE enables you to spend more time on your applications, and less time on infrastructure. CDE allows you to create, manage, and schedule Apache Spark jobs without the overhead of creating and maintaining Spark clusters. With Cloudera Data Engineering, you define virtual clusters with a range of CPU and memory resources, and the cluster scales up and down as needed to run your Spark workloads, helping to control your cloud costs.
 
-*_CDP Data Visualization_* enables data engineers, business analysts, and data scientists to quickly and easily explore data, collaborate, and share insights across the data lifecycle--from data ingest to data insights and beyond.
-Delivered natively as part of Cloudera Data Platform (CDP), Data Visualization delivers a consistent and easy to use data visualization experience with intuitive and accessible drag-and-drop dashboards and custom application creation.
+***CDP Data Visualization*** enables data engineers, business analysts, and data scientists to quickly and easily explore data, collaborate, and share insights across the data lifecycle—from data ingest to data insights and beyond. Delivered natively as part of Cloudera Data Platform (CDP), Data Visualization delivers a consistent and easy to use data visualization experience with intuitive and accessible drag-and-drop dashboards and custom application creation.
 
-image::images/architecture.png[]
+![](images/architecture.png)
 
-== Pre-requisites
+## Pre-requisites
 
-. Laptop with a supported OS (Windows 7 not supported) or Macbook.
-. A modern browser - Google Chrome (IE, Firefox, Safari not supported).
-. Wifi Internet connection.
+1. Laptop with a supported OS (Windows 7 not supported) or Macbook.
+2. A modern browser - Google Chrome (IE, Firefox, Safari not supported).
+2. Wifi Internet connection.
 
-== Step 1: Get Alpha Vantage Key
 
-image::images/alphaVantagePortal.png[]
+## Step 1: Get Alpha Vantage Key
 
-image::images/claimApiKey.png[]
+![](images/alphaVantagePortal.png)
 
-image::images/getKey.png[]
+![](images/claimApiKey.png)
 
-== Step 2: Access CDP Public Cloud Portal
+![](images/getKey.png)
 
-Please use the login url https://login.cdpworkshops.cloudera.com/auth/realms/se-workshop-1/protocol/saml/clients/cdp-sso[Workshop login]
+## Step 2: Access CDP Public Cloud Portal
 
-image::images/login1.png[]
+Please use the login url [Workshop login](https://login.cdpworkshops.cloudera.com/auth/realms/se-workshop-1/protocol/saml/clients/cdp-sso)
+
+![](images/login1.png)
 
 Enter the username and password shared by your instructor.
 
-image::images/login2.png[]
+![](images/login2.png)
 
 You should be able to get the following home page of CDP Public Cloud.
 
-image::images/login3.png[]
+![](images/login3.png)
 
-== Step 3: Define Workload Password
+## Step 3: Define Workload Password
 
-image::images/setWorkloadPasswordStep1.png[]
+![](images/setWorkloadPasswordStep1.png)
 
-image::images/setWorkloadPasswordStep2.png[]
+![](images/setWorkloadPasswordStep2.png)
 
-image::images/setWorkloadPasswordStep3.png[]
+![](images/setWorkloadPasswordStep3.png)
 
-image::images/setWorkloadPasswordStep4.png[]
+![](images/setWorkloadPasswordStep4.png)
 
-== Step 4: Create the flow to ingest stock data via API to Object Storage
+## Step 4: Create the flow to ingest stock data via API to Object Storage
 
-image::images/portalCDF.png[]
+![](images/portalCDF.png)
 
-=== Create a new CDF Catalog
 
-image::images/cdfManageDeploymentStep0.png[]
+### Create a new CDF Catalog
 
-image::images/cdfImportFowDefinition.png[]
+![](images/cdfManageDeploymentStep0.png)
 
-link:Stocks_Intraday_Alpha_Template.json[Stocks_Intraday_Alpha_Template.json]
+![](images/cdfImportFowDefinition.png)
 
-image::images/cdfFlowCatalogCreated.png[]
+[Stocks_Intraday_Alpha_Template.json](Stocks_Intraday_Alpha_Template.json)
 
-=== Deploy DataFlow
+![](images/cdfFlowCatalogCreated.png)
 
-image::images/cdfFlowDeploy.png[]
 
-image::images/cdfDeploymentStep1.png[]
+### Deploy DataFlow
 
-image::images/cdfDeploymentStep2.png[]
+![](images/cdfFlowDeploy.png)
 
-image::images/cdfDeploymentStep3.png[]
+![](images/cdfDeploymentStep1.png)
 
-image::images/cdfDeploymentStep4.png[]
+![](images/cdfDeploymentStep2.png)
 
-image::images/cdfDeploymentStep5.png[]
+![](images/cdfDeploymentStep3.png)
 
-image::images/cdfDeploymentStepFinal.png[]
+![](images/cdfDeploymentStep4.png)
 
-image::images/cdfDeploymentStepDeploying.png[]
+![](images/cdfDeploymentStep5.png)
 
-image::images/cdfWorking.png[]
+![](images/cdfDeploymentStepFinal.png)
 
-=== View Nifi DataFlow
+![](images/cdfDeploymentStepDeploying.png)
 
-image::images/cdfWorking.png[]
+![](images/cdfWorking.png)
 
-image::images/cdfManageDeploymentStep1.png[]
+###  View Nifi DataFlow
 
-image::images/cdfManageDeploymentStep2.png[]
+![](images/cdfWorking.png)
 
-image::images/nifiDataflow.png[]
+![](images/cdfManageDeploymentStep1.png)
 
-=== Create Iceberg Table
+![](images/cdfManageDeploymentStep2.png)
 
-[,sql]
-----
+![](images/nifiDataflow.png)
+
+### Create Iceberg Table
+
+Create database using your login user050, for example replace <user> by user050 for database creation :
+
+
+```sql
 
 CREATE DATABASE <user>_stocks;
+
+```
+See the result
+
+![](images/cdwCreateDatabase.png)
+
+After create a Iceberg table, change <user> with your login :
+
+```sql
 
 CREATE TABLE IF NOT EXISTS <user>_stocks.stock_intraday_1min (
   interv STRING,
@@ -138,31 +144,51 @@ PARTITIONED BY (
   last_refreshed string,
   refreshed_at string)
 STORED AS iceberg;
-----
 
-== Step 5: Process and Ingest Iceberg using CDE
+```
 
-== Step 6: Query Iceberg Tables in Hue and Cloudera Data Visualization
+See the result
 
-[,sql]
-----
+![](images/cdwCreatIcebergTable.png)
+
+
+## Step 5: Process and Ingest Iceberg using CDE
+
+## Step 6: Create Dashboard using CDP DataViz
+
+## Step 7: Query Iceberg Tables in Hue and Cloudera Data Visualization
+
+```sql
 
 DESCRIBE HISTORY <user>_stocks.stock_intraday_1min;
-----
 
-[,sql]
-----
+```
+
+
+![](images/cdfIcebergHistoryBeforeAddingStock.png)
+
+```sql
 
 SELECT count(*), ticker
 FROM <user>_stocks.stock_intraday_1min
 FOR SYSTEM_VERSION AS OF <snapshotid>
 GROUP BY ticker;
-----
 
-[,sql]
-----
+```
+
+![](images/cdfIcebergHistoryAfterAddingStockStep2.png)
+
+![](images/cdfIcebergHistoryAfterAddingStockStep3.png)
+
+![](images/cdfIcebergHistoryAfterAddingStockStep4.png)
+
+![](images/cdfIcebergHistoryAfterAddingStockStep5.png)
+
+
+```sql
 
 SELECT count(*), ticker
 FROM <user>_stocks.stock_intraday_1min
 GROUP BY ticker;
-----
+
+```
