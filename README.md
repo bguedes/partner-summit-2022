@@ -158,32 +158,100 @@ See the result
 
 ## Step 7: Query Iceberg Tables in Hue and Cloudera Data Visualization
 
+### Iceberg Architecture
+
+Apache Icebeg is an open table format, originally designed at Netflix in order to overcome the challenges faced when using already existing data lake formats like Apache Hive.
+
+The design structure of Apache Iceberg is different from Apache Hive, where the metadata layer and data layer are managed and maintained on object storage like Hadoop, s3, etc.
+
+It uses a file structure (metadata and manifest files) that is managed in the metadata layer. Each commit at any timeline is stored as an event on the data layer when data is added. The metadata layer manages the snapshot list. Additionally, it supports integration with multiple query engines,
+
+Any update or delete to the data layer, creates a new snapshot in the metadata layer from the previous latest snapshot and parallelly chains up the snapshot, enabling faster query processing as the query provided by users pulls data at the file level rather than at the partition level.
+
+</br>
+
+![](images/iceberg-architecture.png)
+
+### Iceberg snapshots
+
+Let's see the Iceberg table history
+
 ```sql
 
 DESCRIBE HISTORY <user>_stocks.stock_intraday_1min;
 
 ```
-
+</br>
 
 ![](images/cdfIcebergHistoryBeforeAddingStock.png)
 
+</br>
+
+Copy and paste the snapshot_id and use it on the following impala querie :
+
 ```sql
 
 SELECT count(*), ticker
 FROM <user>_stocks.stock_intraday_1min
-FOR SYSTEM_VERSION AS OF <snapshotid>
+FOR SYSTEM_VERSION AS OF <snapshot_id>
 GROUP BY ticker;
 
 ```
-
-![](images/cdfIcebergHistoryAfterAddingStockStep2.png)
+</br>
 
 ![](images/cdfIcebergHistoryAfterAddingStockStep3.png)
 
+</br>
+
+#### Add new stock
+
+Go to CDF, choose Actions and Suspend the flow.
+Add in parameters called <stock_list> the stock NVDA (Nvidia)
+
+</br>
+
+![](images/cdfAddStock.png)
+
+</br>
+</br>
+
+![](images/cdfAddStockFinal.png)
+
+</br>
+
+Start again the flow.
+
+#### Check new snapshot history
+
+Now let check again the snapshot history :
+
+</br>
+
+
 ![](images/cdfIcebergHistoryAfterAddingStockStep4.png)
+
+</br>
+
+As CDF has ingested a new stock value and then cde has merge those value it has created new Iceberg snapshots
+Copy and paste the new snapshot_id and use it on the following impala query :
+
+```sql
+
+SELECT count(*), ticker
+FROM <user>_stocks.stock_intraday_1min
+FOR SYSTEM_VERSION AS OF <new_snapshot_id>
+GROUP BY ticker;
+
+```
+</br>
 
 ![](images/cdfIcebergHistoryAfterAddingStockStep5.png)
 
+</br>
+
+Now, we can see that this snapshot retreive the count value for stock NVDA that has been added in the cdf dataflow stock_list parameter.
+
+If we run this query without snapshot, we get all values, because all parents and child snapshots :
 
 ```sql
 
@@ -192,3 +260,21 @@ FROM <user>_stocks.stock_intraday_1min
 GROUP BY ticker;
 
 ```
+</br>
+
+![](images/cdwSimpleSelect.png)
+
+
+### Show Data Files
+
+```sql
+
+show files in <user50>_stocks.stock_intraday_1min
+
+```
+
+</br>
+
+![](images/cdwShowFiles.png)
+
+</br>
