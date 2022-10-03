@@ -154,7 +154,9 @@ See the result
 
 ## Step 5: Process and Ingest Iceberg using CDE
 
-## Step 6: Query Iceberg Tables in Hue and Cloudera Data Visualization
+## Step 6: Create Dashboard using CDP DataViz
+
+## Step 7: Query Iceberg Tables in Hue and Cloudera Data Visualization
 
 ```sql
 
