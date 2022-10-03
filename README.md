@@ -118,7 +118,7 @@ You should be able to get the following home page of CDP Public Cloud.
 
 CREATE DATABASE stocks;
 
-CREATE TABLE IF NOT EXISTS stocks.stock_intraday_1min (
+CREATE TABLE IF NOT EXISTS <user>_stocks.stock_intraday_1min (
   interv STRING,
   output_size STRING,
   time_zone STRING,
@@ -141,14 +141,14 @@ STORED AS iceberg;
 
 ```sql
 
-DESCRIBE HISTORY stocks.stock_intraday_1min;
+DESCRIBE HISTORY <user>_stocks.stock_intraday_1min;
 
 ```
 
 ```sql
 
 SELECT count(*), ticker
-FROM stocks.stock_intraday_1min
+FROM <user>_stocks.stock_intraday_1min
 FOR SYSTEM_VERSION AS OF <snapshotid>
 GROUP BY ticker;
 
@@ -157,7 +157,7 @@ GROUP BY ticker;
 ```sql
 
 SELECT count(*), ticker
-FROM stocks.stock_intraday_1min
+FROM <user>_stocks.stock_intraday_1min
 GROUP BY ticker;
 
 ```
