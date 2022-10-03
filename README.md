@@ -114,9 +114,21 @@ You should be able to get the following home page of CDP Public Cloud.
 
 ### Create Iceberg Table
 
+Create database using your login user050, for example replace <user> by user050 for database creation :
+
+
 ```sql
 
-CREATE DATABASE stocks;
+CREATE DATABASE <user>_stocks;
+
+```
+See the result
+
+![](images/cdwCreateDatabase.png)
+
+After create a Iceberg table, change <user> with your login :
+
+```sql
 
 CREATE TABLE IF NOT EXISTS <user>_stocks.stock_intraday_1min (
   interv STRING,
@@ -135,6 +147,11 @@ STORED AS iceberg;
 
 ```
 
+See the result
+
+![](images/cdwCreatIcebergTable.png)
+
+
 ## Step 5: Process and Ingest Iceberg using CDE
 
 ## Step 6: Query Iceberg Tables in Hue and Cloudera Data Visualization
@@ -145,6 +162,9 @@ DESCRIBE HISTORY <user>_stocks.stock_intraday_1min;
 
 ```
 
+
+![](images/cdfIcebergHistoryBeforeAddingStock.png)
+
 ```sql
 
 SELECT count(*), ticker
@@ -153,6 +173,15 @@ FOR SYSTEM_VERSION AS OF <snapshotid>
 GROUP BY ticker;
 
 ```
+
+![](images/cdfIcebergHistoryAfterAddingStockStep2.png)
+
+![](images/cdfIcebergHistoryAfterAddingStockStep3.png)
+
+![](images/cdfIcebergHistoryAfterAddingStockStep4.png)
+
+![](images/cdfIcebergHistoryAfterAddingStockStep5.png)
+
 
 ```sql
 
