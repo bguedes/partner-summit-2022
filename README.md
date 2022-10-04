@@ -171,8 +171,23 @@ Let parameters by default. Click "Next"<br>
 
 ![](images/cdfDeploymentStep3.png)
 
-Flow Name<br>
-> (yourUserName)_stock_data<br>
+CDP_Password<br>
+> Fill up your CDP worload password here<br>
+
+CDP_User<br>
+> your user<br>
+
+S3_Path<br>
+> stocks<br>
+
+api_alpha_key<br>
+> your Alpha Vantage key<br>
+
+stock_list<br>
+> IBM<br>
+> GOOGL<br>
+> AMZN<br>
+> MSFT<br>
 
 ![](images/cdfDeploymentStep4.png)
 
@@ -200,6 +215,7 @@ Deployment on the run.<br>
 ![](images/cdfWorking.png)
 
 Dataflow is up and running.<br>
+In minutes we will start receiving stock information into our bucket! If you want you can check in your bucket under the path s3a://se-workshop-1-aws/user/(yourusername)/stocks/new
 
 ###  View Nifi DataFlow
 
@@ -233,8 +249,12 @@ From the CDW Overview window, click the "HUE" button on the corner left.<br>
 
 ![](images/cdwOverview.png)
 
+Now you're accessing to the sql editor called "HUE".<br>
+
 ![](images/hueOverview.png)
 
+
+Let's select the Impala engine that you will be using for interacting with database.<br>
 Create database using your login user050, for example replace <user> by user050 for database creation :
 
 
@@ -272,8 +292,30 @@ See the result
 
 ![](images/cdwCreatIcebergTable.png)
 
+Let's now create our engeneering process.<br>
+
 
 ## Step 6: Process and Ingest Iceberg using CDE
+
+Now we will use Cloudera Data Engineering to check the files in the object storage, compare if it's new data, and insert them into the Iceberg table.<br>
+From the CDP Portal or CDP Menu choose "Data Engineering".<br>
+
+![](images/portalCDE.png)
+
+
+![](images/cdeCreateJobStep1.png)
+
+
+![](images/cdeCreateJobStep2.png)
+
+
+![](images/cdeCreateJobStep3-UploadResource.png)
+
+
+![](images/cdeCreateJobStep4-Parameters.png)
+
+![](images/cdeCreateJobStep5-Schedule.png)
+
 
 ## Step 7: Create Dashboard using CDP DataViz
 
