@@ -1,8 +1,8 @@
 # Partner Summit 2022 - Workshop Student Guide
 
 -----------------------------
-Version : 0.9.0<br>
-date : 2022/09/04<br>
+Version : 1.0.0<br>
+date : 2022/09/05<br>
 
 --------------
 
@@ -40,12 +40,10 @@ In this exercise, we will work get stock data from [Alpha Vantage](https://www.a
 4. Git installed.
 
 ## Step 1: Get github project
-
-
 <br>
-You can use the workshop project cloning this github repository :
 
-[Workshop login](https://github.com/bguedes/partner-summit-2022)
+
+You can use the workshop project cloning this github repository : [Workshop github repo](https://github.com/bguedes/partner-summit-2022)
 
 ```console
 git clone https://github.com/bguedes/partner-summit-2022t
@@ -165,10 +163,15 @@ Click on "Deploy" button.<br>
 
 Click on "Deploy" button.<br>
 
+![](images/cdfDeploymentChooseEnv.png)
+
+You will need to select the wokshop environment "se-workshop-1-env".<br>
+
 ![](images/cdfDeploymentStep1.png)
 
+Give a name to this dataflow<br>
 Flow Name<br>
-> (yourUserName)_stock_data<br>
+> (user)_stock_data<br>
 
 ![](images/cdfDeploymentStep2.png)
 
@@ -243,10 +246,17 @@ On this windows, choose "Action" -> "View Nifi".<br>
 You can see the Nifi data flow that has been deployed from the json file.<br>
 Let's take a quick look together.<br>
 
+At this stage you can suspend this dataflow, go back to "Deployment Manager" -> "Action" -> "Suspend flow".
+We will add a new stock later on and restart it.<br>
+
+![](images/cdfManageDeploymentStep2.png)
+
 ### Create Iceberg Table
+<br>
 
 Now we are going to create the Iceberg table.<br>
 From the CDP Portal or CDP Menu choose "Data Warehouse".<br>
+<br>
 
 ![](images/portalCDW.png)
 
@@ -259,7 +269,7 @@ Now you're accessing to the sql editor called "HUE".<br>
 ![](images/hueOverview.png)
 
 
-Let's select the Impala engine that you will be using for interacting with database.<br>
+Let's ***select the Impala engine*** that you will be using for interacting with database.<br>
 Create database using your login user050, for example replace (user) by user050 for database creation :
 
 
@@ -338,8 +348,6 @@ Arguments
 
 ![](images/cdeCreateJobStep4-Parameters.png)
 
-![](images/cdeCreateJobStep5-Schedule.png)
-
 Create it, not run it yet<br>
 
 This application will:
@@ -379,7 +387,7 @@ Click "New Connection" button on the left upper corner.<br>
 ![](images/dataVizNewDatasetStep2.png)
 
 Name<br>
-> (user)-_dataset<br>
+> (user)_dataset<br>
 
 Dataset Source<br>
 > From Table<br>
