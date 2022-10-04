@@ -1,7 +1,7 @@
 # Partner Summit 2022 - Workshop Student Guide
 
 -----------------------------
-Version : 0.8<br>
+Version : 0.9.0<br>
 date : 2022/09/04<br>
 
 --------------
