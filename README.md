@@ -31,18 +31,49 @@ In this exercise, we will work get stock data from [Alpha Vantage](https://www.a
 
 1. Laptop with a supported OS (Windows 7 not supported) or Macbook.
 2. A modern browser - Google Chrome (IE, Firefox, Safari not supported).
-2. Wifi Internet connection.
+3. Wifi Internet connection.
+4. Git installed.
+
+## Step 1: Get github project
 
 
-## Step 1: Get Alpha Vantage Key
+<br>
+You can use the workshop project cloning this github repository :
+
+[Workshop login](https://github.com/bguedes/partner-summit-2022)
+
+```console
+git clone https://github.com/bguedes/partner-summit-2022t
+```
+
+## Step 2: Get Alpha Vantage Key
+
+Go to website [Alpha Vantage](https://www.alphavantage.co/)<br>
+Choose link -> 'Get Your Free Api Key Today'
+</br>
 
 ![](images/alphaVantagePortal.png)
 
+Choose 'Student' for description<br>
+Choose your own organisation<br>
+Fill up your professional email address<br>
+</br>
+
 ![](images/claimApiKey.png)
 
-![](images/getKey.png)
+Choose 'Student' for description<br>
+Choose your own organisation<br>
+Fill up your professional email address<br>
+Request your key
+</br>
 
-## Step 2: Access CDP Public Cloud Portal
+![](images/getKey.png)
+</br>
+
+Store your given key, you will need it later.
+</br>
+
+## Step 3: Access CDP Public Cloud Portal
 
 Please use the login url [Workshop login](https://login.cdpworkshops.cloudera.com/auth/realms/se-workshop-1/protocol/saml/clients/cdp-sso)
 
@@ -56,20 +87,43 @@ You should be able to get the following home page of CDP Public Cloud.
 
 ![](images/login3.png)
 
-## Step 3: Define Workload Password
+## Step 4: Define Workload Password
+
+You will need to define your workload password that will be used to parameters the Data Services.<br>
+Please keep it with you, if you have forget it, don't panic, you will be able to repeat this process and define another one.<br>
+</br>
+Click on your profile.
 
 ![](images/setWorkloadPasswordStep1.png)
+</br>
 
 ![](images/setWorkloadPasswordStep2.png)
+</br>
+
+Define your password.
+</br>
+Click button -> "Set Workload Password".
+</br>
 
 ![](images/setWorkloadPasswordStep3.png)
 
+<br>
+
+
 ![](images/setWorkloadPasswordStep4.png)
 
-## Step 4: Create the flow to ingest stock data via API to Object Storage
+Check that you have this mention -> "Workload password is currently set".
+</br>
+
+## Step 5: Create the flow to ingest stock data via API to Object Storage
+
+### CDP Portal
+
+<br>
 
 ![](images/portalCDF.png)
 
+Choose CDF icon.<br>
 
 ### Create a new CDF Catalog
 
@@ -152,11 +206,11 @@ See the result
 ![](images/cdwCreatIcebergTable.png)
 
 
-## Step 5: Process and Ingest Iceberg using CDE
+## Step 6: Process and Ingest Iceberg using CDE
 
-## Step 6: Create Dashboard using CDP DataViz
+## Step 7: Create Dashboard using CDP DataViz
 
-## Step 7: Query Iceberg Tables in Hue and Cloudera Data Visualization
+## Step 8: Query Iceberg Tables in Hue and Cloudera Data Visualization
 
 ### Iceberg Architecture
 
