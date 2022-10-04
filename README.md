@@ -203,15 +203,37 @@ Dataflow is up and running.<br>
 
 ###  View Nifi DataFlow
 
+Click on blue arrow on the right of your deployed dataflow.<br>
+
 ![](images/cdfWorking.png)
+
+Select the blue arrow on the right side of the deployed dataflow.<br>
 
 ![](images/cdfManageDeploymentStep1.png)
 
+Select "Manage Deployment" on top right corner.<br>
+
 ![](images/cdfManageDeploymentStep2.png)
+
+On this windows, choose "Action" -> "View Nifi".<br>
 
 ![](images/nifiDataflow.png)
 
+You can see the Nifi data flow that has been deployed from the json file.<br>
+Let's take a quick look together.<br>
+
 ### Create Iceberg Table
+
+Now we are going to create the Iceberg table.<br>
+From the CDP Portal or CDP Menu choose "Data Warehouse".<br>
+
+![](images/portalCDW.png)
+
+From the CDW Overview window, click the "HUE" button on the corner left.<br>
+
+![](images/cdwOverview.png)
+
+![](images/hueOverview.png)
 
 Create database using your login user050, for example replace <user> by user050 for database creation :
 
