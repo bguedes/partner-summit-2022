@@ -55,14 +55,14 @@ git clone https://github.com/bguedes/partner-summit-2022t
 
 Go to website [Alpha Vantage](https://www.alphavantage.co/)<br>
 Choose link -> 'Get Your Free Api Key Today'
-</br>
+<br>
 
 ![](images/alphaVantagePortal.png)
 
 Choose 'Student' for description<br>
 Choose your own organisation<br>
 Fill up your professional email address<br>
-</br>
+<br>
 
 ![](images/claimApiKey.png)
 
@@ -70,13 +70,13 @@ Choose 'Student' for description<br>
 Choose your own organisation<br>
 Fill up your professional email address<br>
 Request your key
-</br>
+<br>
 
 ![](images/getKey.png)
-</br>
+<br>
 
 Store your given key, you will need it later.
-</br>
+<br>
 
 ## Step 3: Access CDP Public Cloud Portal
 
@@ -96,19 +96,19 @@ You should be able to get the following home page of CDP Public Cloud.
 
 You will need to define your workload password that will be used to parameters the Data Services.<br>
 Please keep it with you, if you have forget it, don't panic, you will be able to repeat this process and define another one.<br>
-</br>
+<br>
 Click on your profile.
 
 ![](images/setWorkloadPasswordStep1.png)
-</br>
+<br>
 
 ![](images/setWorkloadPasswordStep2.png)
-</br>
+<br>
 
 Define your password.
-</br>
+<br>
 Click button -> "Set Workload Password".
-</br>
+<br>
 
 ![](images/setWorkloadPasswordStep3.png)
 
@@ -118,7 +118,7 @@ Click button -> "Set Workload Password".
 ![](images/setWorkloadPasswordStep4.png)
 
 Check that you have this mention -> "Workload password is currently set".
-</br>
+<br>
 
 ## Step 5: Create the flow to ingest stock data via API to Object Storage
 
@@ -260,7 +260,7 @@ Now you're accessing to the sql editor called "HUE".<br>
 
 
 Let's select the Impala engine that you will be using for interacting with database.<br>
-Create database using your login user050, for example replace <user> by user050 for database creation :
+Create database using your login user050, for example replace (user) by user050 for database creation :
 
 
 ```sql
@@ -272,7 +272,7 @@ See the result
 
 ![](images/cdwCreateDatabase.png)
 
-After create a Iceberg table, change <user> with your login :
+After create a Iceberg table, change (user) with your login :
 
 ```sql
 
@@ -327,7 +327,7 @@ Application File<br>
 Main Class<br>
 > com.cloudera.cde.stocks.StockProcessIceberg
 
-Arguments<br>
+Arguments
 > (user)_stocks<br>
 > s3a://se-workshop-1-aws/<br>
 > stocks<br>
@@ -390,7 +390,7 @@ Select Database<br>
 Select Table<br>
 > stock_intraday_1min
 
-Select "Create".<br>
+Select "Create".
 
 ![](images/dataVizNewDatasetStep3.png)
 
@@ -430,7 +430,7 @@ It uses a file structure (metadata and manifest files) that is managed in the me
 
 Any update or delete to the data layer, creates a new snapshot in the metadata layer from the previous latest snapshot and parallelly chains up the snapshot, enabling faster query processing as the query provided by users pulls data at the file level rather than at the partition level.
 
-</br>
+<br>
 
 ![](images/iceberg-architecture.png)
 
@@ -446,11 +446,11 @@ Let's see the Iceberg table history
 DESCRIBE HISTORY <user>_stocks.stock_intraday_1min;
 
 ```
-</br>
+<br>
 
 ![](images/cdfIcebergHistoryBeforeAddingStock.png)
 
-</br>
+<br>
 
 Copy and paste the snapshot_id and use it on the following impala querie :
 
@@ -462,27 +462,27 @@ FOR SYSTEM_VERSION AS OF <snapshot_id>
 GROUP BY ticker;
 
 ```
-</br>
+<br>
 
 ![](images/cdfIcebergHistoryAfterAddingStockStep3.png)
 
-</br>
+<br>
 
 #### Add new stock
 
 Go to CDF, choose Actions and Suspend the flow.
-Add in parameters called <stock_list> the stock NVDA (Nvidia)
+Add in parameters called (stock_list)  the stock NVDA (Nvidia)
 
-</br>
+<br>
 
-![](images/cdfAddStock.png)</br>
+![](images/cdfAddStock.png)<br>
 
 Let's add on the parameter "stock_list" the stock NVDA (NVIDIA)<br>
 Apply changes<br>
 
 ![](images/cdfAddStockFinal.png)
 
-</br>
+<br>
 
 Start again the flow.
 
@@ -490,12 +490,12 @@ Start again the flow.
 
 Now let check again the snapshot history :
 
-</br>
+<br>
 
 
 ![](images/cdfIcebergHistoryAfterAddingStockStep4.png)
 
-</br>
+<br>
 
 As CDF has ingested a new stock value and then cde has merge those value it has created new Iceberg snapshots
 Copy and paste the new snapshot_id and use it on the following impala query :
@@ -508,11 +508,11 @@ FOR SYSTEM_VERSION AS OF <new_snapshot_id>
 GROUP BY ticker;
 
 ```
-</br>
+<br>
 
 ![](images/cdfIcebergHistoryAfterAddingStockStep5.png)
 
-</br>
+<br>
 
 Now, we can see that this snapshot retreive the count value for stock NVDA that has been added in the cdf dataflow stock_list parameter.
 
@@ -525,7 +525,7 @@ FROM <user>_stocks.stock_intraday_1min
 GROUP BY ticker;
 
 ```
-</br>
+<br>
 
 ![](images/cdwSimpleSelect.png)
 
@@ -538,8 +538,8 @@ show files in <user50>_stocks.stock_intraday_1min
 
 ```
 
-</br>
+<br>
 
 ![](images/cdwShowFiles.png)
 
-</br>
+<br>
