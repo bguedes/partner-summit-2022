@@ -127,34 +127,79 @@ Choose CDF icon.<br>
 
 ### Create a new CDF Catalog
 
+On the left menu choose -> "Catalog".<br>
+Then select the button -> "Import Flow Definition".<br>
+
 ![](images/cdfManageDeploymentStep0.png)
+
+Fill up those parameters :<br>
+
+Flow Name<br>
+> (yourUserName)_stock_data<br>
+
+Nifi Flow Description
+>Upload the file "**[Stocks_Intraday_Alpha_Template.json](https://github.com/bguedes/partner-summit-2022/blob/main/Stocks_Intraday_Alpha_Template.json)**"<br>
+
+Click button "Import"<br>
 
 ![](images/cdfImportFowDefinition.png)
 
-[Stocks_Intraday_Alpha_Template.json](Stocks_Intraday_Alpha_Template.json)
+The new catalog has been added<br>
 
 ![](images/cdfFlowCatalogCreated.png)
+
+Now let's deploy it.<br>
 
 
 ### Deploy DataFlow
 
+Click on the catalog you just finished to create.<br>
+Click on "Deploy" button.<br>
+
 ![](images/cdfFlowDeploy.png)
+
+Click on "Deploy" button.<br>
 
 ![](images/cdfDeploymentStep1.png)
 
+Flow Name<br>
+> (yourUserName)_stock_data<br>
+
 ![](images/cdfDeploymentStep2.png)
+
+Let parameters by default. Click "Next"<br>
 
 ![](images/cdfDeploymentStep3.png)
 
+Flow Name<br>
+> (yourUserName)_stock_data<br>
+
 ![](images/cdfDeploymentStep4.png)
+
+Nifi Node Sizing<br>
+> Extra Small<br>
+
+Enable "Auto scaling"<br>
+> Let parameters by default<br>
+
+Click "Next"<br>
 
 ![](images/cdfDeploymentStep5.png)
 
+You can defined KPI's in regards what has been specified in your dataflow, but we will skip this for simplication.<br>
+Click "Next"<br>
+
 ![](images/cdfDeploymentStepFinal.png)
+
+Click "Deploy" to launch the deployment<br>
 
 ![](images/cdfDeploymentStepDeploying.png)
 
+Deployment on the run.<br>
+
 ![](images/cdfWorking.png)
+
+Dataflow is up and running.<br>
 
 ###  View Nifi DataFlow
 
