@@ -434,6 +434,9 @@ Any update or delete to the data layer, creates a new snapshot in the metadata l
 
 ![](images/iceberg-architecture.png)
 
+Our example will load the intraday stock daily since the free API does not give real-time data, but we can change the Cloudera Dataflow Parameter to add one more ticker and we've scheduled to run hourly the CDE process. After this we will be able to see the new ticker information in the dashboard and also **perform time travel using Iceberg!**
+
+
 ### Iceberg snapshots
 
 Let's see the Iceberg table history
