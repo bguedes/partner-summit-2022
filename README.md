@@ -303,26 +303,120 @@ Let's now create our engeneering process.<br>
 ## Step 6: Process and Ingest Iceberg using CDE
 
 Now we will use Cloudera Data Engineering to check the files in the object storage, compare if it's new data, and insert them into the Iceberg table.<br>
-From the CDP Portal or CDP Menu choose "Data Engineering".<br>
+
 
 ![](images/portalCDE.png)
 
+From the CDP Portal or CDP Menu choose "Data Engineering".<br>
 
 ![](images/cdeCreateJobStep1.png)
 
+Let's create a job -> click Create Job".<br>
 
 ![](images/cdeCreateJobStep2.png)
 
+Job Type<br>
+> Choose Spark 3.2.0<br>
 
-![](images/cdeCreateJobStep3-UploadResource.png)
+Name<br>
+> (user)-StockIceberg<br>
+
+Application File<br>
+> Select  StockIcebergResource -> stockdatabase_2.12-1.0.jar
+
+Main Class<br>
+> com.cloudera.cde.stocks.StockProcessIceberg
+
+Arguments<br>
+> (user)_stocks<br>
+> s3a://se-workshop-1-aws/<br>
+> stocks<br>
+> (user)<br>
+
+![](images/cdeCreateJobStep3-SelectResource.png)
 
 
 ![](images/cdeCreateJobStep4-Parameters.png)
 
 ![](images/cdeCreateJobStep5-Schedule.png)
 
+Create it, not run it yet<br>
+
+This application will:
+
+- Check new files in the new directory;
+- Create a temp table in Spark/cache this table and identify duplicated rows (in case that NiFi loaded the same data again)
+- MERGE INTO the final table, INSERT new data or UPDATE if exists
+- Archive files in the bucket
+
+After execution, the processed files will be in your bucket but under the "processed"+date directory
+
+On step7, we will query data.
+
+But right now, let show you how to create a simple dashboard, using CDP DataViz.
 
 ## Step 7: Create Dashboard using CDP DataViz
+
+Go back to CDW window.<br>
+
+![](images/cdwPortal.png)
+
+On the menu on the left choose Data Vizualisation.<br>
+
+![](images/cdwDataVizStep1.png)
+
+Then click the "Data Viz" button on the right.<br>
+You will access to the following window :<br>
+
+![](images/dataVizNewDataset.png)
+
+Choose "Data" on the upper menu.<br>
+
+![](images/dataVizNewDatasetStep1.png)
+
+Click "New Connection" button on the left upper corner.<br>
+
+![](images/dataVizNewDatasetStep2.png)
+
+Name<br>
+> (user)-_dataset<br>
+
+Dataset Source<br>
+> From Table<br>
+
+Select Database<br>
+> (user)_stocks
+
+Select Table<br>
+> stock_intraday_1min
+
+Select "Create".<br>
+
+![](images/dataVizNewDatasetStep3.png)
+
+Select "New Dashboard" -> ![](images/newDashBoardIco.png)<br>
+
+
+
+![](images/dataVizNewDatasetStep4.png)
+
+Let's drag from Data on the "Dashboard Designer" to Visuals.<br>
+
+Dimansions -> ticker<br>
+> Move it to Visuals -> Dimensions
+
+Measures -> #volume<br>
+> Move it to Visuals -> Measures
+
+![](images/dataVizNewDatasetStep5.png)
+
+Then on Visuals choose "Packed Bubbles"<br>
+
+![](images/dataVizNewDatasetStep6.png)
+
+Make it public<br>
+You have succed in a simple way your dashboard, well done<br>
+Now let's query our data and see the time travel and snapshoting capabilties of Iceberg<br>
 
 ## Step 8: Query Iceberg Tables in Hue and Cloudera Data Visualization
 
@@ -378,10 +472,10 @@ Add in parameters called <stock_list> the stock NVDA (Nvidia)
 
 </br>
 
-![](images/cdfAddStock.png)
+![](images/cdfAddStock.png)</br>
 
-</br>
-</br>
+Let's add on the parameter "stock_list" the stock NVDA (NVIDIA)<br>
+Apply changes<br>
 
 ![](images/cdfAddStockFinal.png)
 
