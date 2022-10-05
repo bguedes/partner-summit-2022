@@ -46,7 +46,7 @@ In this exercise, we will work get stock data from [Alpha Vantage](https://www.a
 You can use the workshop project cloning this github repository : [Workshop github repo](https://github.com/bguedes/partner-summit-2022)
 
 ```console
-git clone https://github.com/bguedes/partner-summit-2022t
+git clone https://github.com/bguedes/partner-summit-2022
 ```
 
 ## Step 2: Get Alpha Vantage Key
